@@ -8,8 +8,7 @@ import vendingmachine.io.writer.Writer;
 
 import java.util.List;
 
-import static vendingmachine.view.constants.PrintMessage.INPUT_NAME_PRICE_QUANTITY_MSG;
-import static vendingmachine.view.constants.PrintMessage.INPUT_VENDINGMACHINE_OWN_AMOUNT_MSG;
+import static vendingmachine.view.constants.PrintMessage.*;
 
 public class InputView {
     private final Writer writer;
@@ -29,5 +28,10 @@ public class InputView {
     public List<ProductInfo> getProductInfo() {
         writer.writeln(INPUT_NAME_PRICE_QUANTITY_MSG.getMessage());
         return Converter.convertToTriple(reader.readLine());
+    }
+
+    public int readPaidMoney() {
+        writer.writeln(INPUT_MONEY_AMOUNT_MSG.getMessage());
+        return Converter.convertToInt(reader.readLine());
     }
 }
