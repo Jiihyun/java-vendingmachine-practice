@@ -2,6 +2,7 @@ package vendingmachine.view;
 
 import vendingmachine.converter.Converter;
 import vendingmachine.domain.ProductInfo;
+import vendingmachine.domain.ProductInfos;
 import vendingmachine.domain.VendingMachineOwnMoney;
 import vendingmachine.io.reader.Reader;
 import vendingmachine.io.writer.Writer;
@@ -25,9 +26,10 @@ public class InputView {
         return VendingMachineOwnMoney.from(totalAmount);
     }
 
-    public List<ProductInfo> getProductInfo() {
+    public ProductInfos getProductInfo() {
         writer.writeln(INPUT_NAME_PRICE_QUANTITY_MSG.getMessage());
-        return Converter.convertToTriple(reader.readLine());
+        List<ProductInfo> productInfos = Converter.convertToTriple(reader.readLine());
+        return new ProductInfos(productInfos);
     }
 
     public int readPaidMoney() {
