@@ -14,6 +14,10 @@ public class ProductInfo {
         this.quantity = quantity;
     }
 
+    public boolean findName(String productName) {
+        return name.equals(productName);
+    }
+
 
     public String getName() {
         return name;

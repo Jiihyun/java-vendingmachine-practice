@@ -8,4 +8,9 @@ public class ProductInfos {
     public ProductInfos(List<ProductInfo> productInfos) {
         this.productInfos = productInfos;
     }
+
+    public boolean hasProduct(String productName) {
+        return productInfos.stream()
+                .anyMatch(productInfo -> productInfo.findName(productName));
+    }
 }

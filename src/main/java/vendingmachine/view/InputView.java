@@ -36,4 +36,9 @@ public class InputView {
         writer.writeln(INPUT_MONEY_AMOUNT_MSG.getMessage());
         return Converter.convertToInt(reader.readLine());
     }
+
+    public String readProductName() {
+        writer.writeln(INPUT_NAME_OF_PRODUCT_MSG.getMessage());
+        return reader.readLine();
+    }
 }
