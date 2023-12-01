@@ -1,7 +1,7 @@
 package vendingmachine.domain;
 
 import vendingmachine.domain.dto.output.PossessCoinResponse;
-import vendingmachine.validator.TotalAmountValidator;
+import vendingmachine.validator.MoneyValidator;
 
 import java.util.EnumMap;
 import java.util.Map;
@@ -28,7 +28,7 @@ public class VendingMachineOwnMoney {
     }
 
     public static VendingMachineOwnMoney from(int totalAmount) {
-        TotalAmountValidator.validatePositive(totalAmount);
+        MoneyValidator.validatePositive(totalAmount);
         return new VendingMachineOwnMoney(totalAmount, createStatistics(), new RandomCoinMaker());
     }
 

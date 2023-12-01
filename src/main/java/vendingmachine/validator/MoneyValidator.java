@@ -2,12 +2,8 @@ package vendingmachine.validator;
 
 import vendingmachine.exception.ExceptionMessage;
 
-import java.util.List;
-
-import static vendingmachine.exception.ExceptionMessage._SIZE;
-
-public class TotalAmountValidator {
-    private TotalAmountValidator() {
+public class MoneyValidator {
+    private MoneyValidator() {
         throw new AssertionError();
     }
 
