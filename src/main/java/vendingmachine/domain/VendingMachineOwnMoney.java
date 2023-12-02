@@ -35,9 +35,11 @@ public class VendingMachineOwnMoney {
     public PossessCoinResponse getQuantities() {
         while (totalAmount > 0) {
             int coinAmount = randomCoinMaker.generate();
-            Coin coin = Coin.from(coinAmount);
-            possessQuantities.put(coin, possessQuantities.get(coin) + 1);
-            totalAmount -= coinAmount;
+            if (totalAmount >= coinAmount) {
+                Coin coin = Coin.from(coinAmount);
+                possessQuantities.put(coin, possessQuantities.get(coin) + 1);
+                totalAmount -= coinAmount;
+            }
         }
         return new PossessCoinResponse(
                 possessQuantities.get(COIN_500),
