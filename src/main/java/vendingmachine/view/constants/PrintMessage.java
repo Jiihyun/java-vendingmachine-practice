@@ -11,7 +11,8 @@ public enum PrintMessage {
     /*
     OutputView
      */
-    OUTPUT_COIN_QUANTITY_MSG(System.lineSeparator() + "자판기가 보유한 동전");
+    OUTPUT_COIN_QUANTITY_MSG(System.lineSeparator() + "자판기가 보유한 동전"),
+    OUTPUT_CHANGE_MSG(System.lineSeparator() + "잔돈");
 
     private final String message;
 
