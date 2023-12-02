@@ -5,7 +5,7 @@ import vendingmachine.validator.PriceValidator;
 public class ProductInfo {
     private final String name;
     private final int price;
-    private final int quantity;
+    private int quantity;
 
     public ProductInfo(String name, int price, int quantity) {
         PriceValidator.validatePrice(price);
@@ -29,5 +29,9 @@ public class ProductInfo {
 
     public int getQuantity() {
         return quantity;
+    }
+
+    public void minusQuantity() {
+        quantity--;
     }
 }

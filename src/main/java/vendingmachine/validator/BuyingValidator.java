@@ -9,7 +9,7 @@ public class BuyingValidator {
     }
 
     public static void validateIfProductExist(ProductInfos productInfos, String productName) {
-        if (!productInfos.hasProduct(productName)){
+        if (!productInfos.hasProduct(productName)) {
             throw ExceptionMessage.NONEXIST_PRODUCT.getException();
         }
     }

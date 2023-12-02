@@ -5,7 +5,7 @@ public enum PrintFormat {
             "100원 - %d개" + System.lineSeparator() +
             "50원 - %d개" + System.lineSeparator() +
             "10원 - %d개" + System.lineSeparator()),
-    ;
+    PAID_MONEY_FORMAT(System.lineSeparator() + "투입 금액: %d원");
     private final String format;
 
     PrintFormat(String format) {

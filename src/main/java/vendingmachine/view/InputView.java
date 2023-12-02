@@ -6,9 +6,11 @@ import vendingmachine.domain.ProductInfos;
 import vendingmachine.domain.VendingMachineOwnMoney;
 import vendingmachine.io.reader.Reader;
 import vendingmachine.io.writer.Writer;
+import vendingmachine.view.constants.PrintFormat;
 
 import java.util.List;
 
+import static vendingmachine.view.constants.PrintFormat.*;
 import static vendingmachine.view.constants.PrintMessage.*;
 
 public class InputView {
@@ -37,7 +39,8 @@ public class InputView {
         return Converter.convertToInt(reader.readLine());
     }
 
-    public String readProductName() {
+    public String readProductName(int paidMoney) {
+        writer.writef(PAID_MONEY_FORMAT.getFormat(), paidMoney);
         writer.writeln(INPUT_NAME_OF_PRODUCT_MSG.getMessage());
         return reader.readLine();
     }
