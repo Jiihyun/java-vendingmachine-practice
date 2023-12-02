@@ -47,4 +47,8 @@ public class VendingMachineOwnMoney {
                 possessQuantities.get(COIN_50),
                 possessQuantities.get(COIN_10));
     }
+
+    public Map<Coin, Integer> getPossessQuantities() {
+        return possessQuantities;
+    }
 }
