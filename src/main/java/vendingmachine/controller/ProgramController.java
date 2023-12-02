@@ -1,8 +1,13 @@
 package vendingmachine.controller;
 
+import vendingmachine.domain.Coin;
+import vendingmachine.domain.ProductInfos;
+import vendingmachine.domain.VendingMachine;
 import vendingmachine.domain.VendingMachineOwnMoney;
 import vendingmachine.view.InputView;
 import vendingmachine.view.OutputView;
+
+import java.util.Map;
 
 public class ProgramController {
     private final InputView inputView;
@@ -16,5 +21,16 @@ public class ProgramController {
     public void start() {
         VendingMachineOwnMoney moneyInVendingMachine = inputView.getMoneyInVendingMachine();
         outputView.printQuantities(moneyInVendingMachine.getQuantities());
+
+        ProductInfos productInfos = inputView.getProductInfo();
+        int paidMoney = inputView.readPaidMoney();
+
+        VendingMachine vendingMachine = VendingMachine.of(productInfos, paidMoney);
+        while (productInfos.getProductOfLowestPrice() <= vendingMachine.getRemainMoney()) {
+            vendingMachine.buyProduct(inputView.readProductName(vendingMachine.getRemainMoney()));
+        }
+
+        Map<Coin, Integer> change = vendingMachine.returnChange(moneyInVendingMachine, vendingMachine.getRemainMoney());
+        outputView.printChange(paidMoney, change);
     }
 }
