@@ -22,14 +22,13 @@ public class VendingMachine {
         return new VendingMachine(productInfos, paidMoney);
     }
 
-    public int buyProduct(String productName) {
+    public void buyProduct(String productName) {
         BuyingValidator.validateIfProductExist(productInfos, productName);
 
         if (hasSufficientMoney(remainMoney, productInfos) && enoughQuantity(productInfos, productName)) {
             remainMoney -= productInfos.getProductPrice(productName);
             productInfos.minusQuantity(productName);
         }
-        return remainMoney;
     }
 
     public int getRemainMoney() {

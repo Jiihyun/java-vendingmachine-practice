@@ -5,6 +5,7 @@ import vendingmachine.io.reader.ConsoleReader;
 import vendingmachine.io.writer.ConsoleWriter;
 import vendingmachine.view.InputView;
 import vendingmachine.view.OutputView;
+import vendingmachine.view.RetryHandler;
 
 public class Application {
     public static void main(String[] args) {
@@ -15,7 +16,8 @@ public class Application {
     private static ProgramController getProgramController() {
         ConsoleWriter writer = new ConsoleWriter();
         ConsoleReader reader = new ConsoleReader();
-        InputView inputView = new InputView(writer, reader);
+        RetryHandler retryHandler = new RetryHandler(writer);
+        InputView inputView = new InputView(writer, reader, retryHandler);
         OutputView outputView = new OutputView(writer);
 
         return new ProgramController(inputView, outputView);

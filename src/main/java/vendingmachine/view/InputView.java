@@ -16,26 +16,39 @@ import static vendingmachine.view.constants.PrintMessage.*;
 public class InputView {
     private final Writer writer;
     private final Reader reader;
+    private final RetryHandler retryHandler;
 
-    public InputView(Writer writer, Reader reader) {
+    public InputView(Writer writer, Reader reader, RetryHandler retryHandler) {
         this.writer = writer;
         this.reader = reader;
+        this.retryHandler = retryHandler;
+    }
+
+    public VendingMachineOwnMoney readMoneyInVendingMachine() {
+        writer.writeln(INPUT_VENDINGMACHINE_OWN_AMOUNT_MSG.getMessage());
+        return retryHandler.retryUntilSuccess(this::getMoneyInVendingMachine);
     }
 
     public VendingMachineOwnMoney getMoneyInVendingMachine() {
-        writer.writeln(INPUT_VENDINGMACHINE_OWN_AMOUNT_MSG.getMessage());
         int totalAmount = Converter.convertToInt(reader.readLine());
         return VendingMachineOwnMoney.from(totalAmount);
     }
 
-    public ProductInfos getProductInfo() {
+
+    public ProductInfos readProductInfo() {
         writer.writeln(INPUT_NAME_PRICE_QUANTITY_MSG.getMessage());
+        return retryHandler.retryUntilSuccess(this::getProductInfo);
+    }
+    public ProductInfos getProductInfo() {
         List<ProductInfo> productInfos = Converter.convertToTriple(reader.readLine());
         return new ProductInfos(productInfos);
     }
 
     public int readPaidMoney() {
         writer.writeln(INPUT_MONEY_AMOUNT_MSG.getMessage());
+        return retryHandler.retryUntilSuccess(this::getPaidMoney);
+    }
+    public int getPaidMoney() {
         return Converter.convertToInt(reader.readLine());
     }
 

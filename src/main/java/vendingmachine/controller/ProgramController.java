@@ -19,10 +19,10 @@ public class ProgramController {
     }
 
     public void start() {
-        VendingMachineOwnMoney moneyInVendingMachine = inputView.getMoneyInVendingMachine();
+        VendingMachineOwnMoney moneyInVendingMachine = inputView.readMoneyInVendingMachine();
         outputView.printQuantities(moneyInVendingMachine.getQuantities());
 
-        ProductInfos productInfos = inputView.getProductInfo();
+        ProductInfos productInfos = inputView.readProductInfo();
         int paidMoney = inputView.readPaidMoney();
 
         VendingMachine vendingMachine = VendingMachine.of(productInfos, paidMoney);
@@ -31,6 +31,6 @@ public class ProgramController {
         }
 
         Map<Coin, Integer> change = vendingMachine.returnChange(moneyInVendingMachine, vendingMachine.getRemainMoney());
-        outputView.printChange(paidMoney, change);
+        outputView.printChange(vendingMachine.getRemainMoney(), change);
     }
 }
