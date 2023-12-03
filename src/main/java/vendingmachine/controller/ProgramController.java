@@ -3,7 +3,7 @@ package vendingmachine.controller;
 import vendingmachine.domain.Coin;
 import vendingmachine.domain.ProductInfos;
 import vendingmachine.domain.VendingMachine;
-import vendingmachine.domain.VendingMachineOwnMoney;
+import vendingmachine.domain.VendingMachineCoins;
 import vendingmachine.view.InputView;
 import vendingmachine.view.OutputView;
 
@@ -19,7 +19,7 @@ public class ProgramController {
     }
 
     public void start() {
-        VendingMachineOwnMoney moneyInVendingMachine = inputView.readMoneyInVendingMachine();
+        VendingMachineCoins moneyInVendingMachine = inputView.readMoneyInVendingMachine();
         outputView.printQuantities(moneyInVendingMachine.getQuantities());
 
         ProductInfos productInfos = inputView.readProductInfo();

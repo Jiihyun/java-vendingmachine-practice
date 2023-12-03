@@ -4,7 +4,6 @@ import vendingmachine.validator.BuyingValidator;
 import vendingmachine.validator.MoneyValidator;
 
 import java.util.EnumMap;
-import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -43,7 +42,7 @@ public class VendingMachine {
         return productInfos.getProductQuantity(productName) >= 1;
     }
 
-    public Map<Coin, Integer> returnChange(VendingMachineOwnMoney moneyInVendingMachine, int remainMoney) {
+    public Map<Coin, Integer> returnChange(VendingMachineCoins moneyInVendingMachine, int remainMoney) {
         Map<Coin, Integer> change = new EnumMap<>(Coin.class);
         Map<Coin, Integer> possessQuantities = moneyInVendingMachine.getPossessQuantities();
         Map<Coin, Integer> changeQuantity = possessQuantities.entrySet().stream().filter(coinIntegerEntry -> coinIntegerEntry.getValue() > 0)

@@ -3,10 +3,9 @@ package vendingmachine.view;
 import vendingmachine.converter.Converter;
 import vendingmachine.domain.ProductInfo;
 import vendingmachine.domain.ProductInfos;
-import vendingmachine.domain.VendingMachineOwnMoney;
+import vendingmachine.domain.VendingMachineCoins;
 import vendingmachine.io.reader.Reader;
 import vendingmachine.io.writer.Writer;
-import vendingmachine.view.constants.PrintFormat;
 
 import java.util.List;
 
@@ -24,14 +23,14 @@ public class InputView {
         this.retryHandler = retryHandler;
     }
 
-    public VendingMachineOwnMoney readMoneyInVendingMachine() {
+    public VendingMachineCoins readMoneyInVendingMachine() {
         writer.writeln(INPUT_VENDINGMACHINE_OWN_AMOUNT_MSG.getMessage());
         return retryHandler.retryUntilSuccess(this::getMoneyInVendingMachine);
     }
 
-    public VendingMachineOwnMoney getMoneyInVendingMachine() {
+    public VendingMachineCoins getMoneyInVendingMachine() {
         int totalAmount = Converter.convertToInt(reader.readLine());
-        return VendingMachineOwnMoney.from(totalAmount);
+        return VendingMachineCoins.from(totalAmount);
     }
 
 

@@ -8,12 +8,12 @@ import java.util.Map;
 
 import static vendingmachine.domain.Coin.*;
 
-public class VendingMachineOwnMoney {
+public class VendingMachineCoins {
     private int totalAmount;
     private final Map<Coin, Integer> possessQuantities;
     private final RandomCoinMaker randomCoinMaker;
 
-    public VendingMachineOwnMoney(int totalAmount, Map<Coin, Integer> possessQuantities, RandomCoinMaker randomCoinMaker) {
+    public VendingMachineCoins(int totalAmount, Map<Coin, Integer> possessQuantities, RandomCoinMaker randomCoinMaker) {
         this.totalAmount = totalAmount;
         this.possessQuantities = possessQuantities;
         this.randomCoinMaker = randomCoinMaker;
@@ -27,9 +27,9 @@ public class VendingMachineOwnMoney {
         return possessQuantity;
     }
 
-    public static VendingMachineOwnMoney from(int totalAmount) {
+    public static VendingMachineCoins from(int totalAmount) {
         MoneyValidator.validatePositive(totalAmount);
-        return new VendingMachineOwnMoney(totalAmount, createStatistics(), new RandomCoinMaker());
+        return new VendingMachineCoins(totalAmount, createStatistics(), new RandomCoinMaker());
     }
 
     public PossessCoinResponse getQuantities() {
