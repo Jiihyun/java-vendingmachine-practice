@@ -1,8 +1,7 @@
 package vendingmachine.domain;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.HashMap;
+import java.util.Map;
 
 public enum Coin {
     COIN_0(0),
@@ -10,7 +9,15 @@ public enum Coin {
     COIN_100(100),
     COIN_50(50),
     COIN_10(10);
-    public static final List<Coin> coinCategories = List.of(values());
+    // imp: 미리 객체를 생성하여 성능 개선시키기
+    private static final Map<Integer, Coin> cachedCoin = new HashMap<>();
+
+    static {
+        for (Coin coin : values()) {
+            cachedCoin.put(coin.amount, coin);
+        }
+    }
+
     private final int amount;
 
     Coin(final int amount) {
@@ -18,10 +25,7 @@ public enum Coin {
     }
 
     public static Coin from(int randomAmount) {
-        return coinCategories.stream()
-                .filter(coin -> coin.amount == randomAmount)
-                .findFirst()
-                .orElse(COIN_0);
+        return cachedCoin.get(randomAmount);
     }
 
     public int getAmount() {
