@@ -4,9 +4,6 @@ import vendingmachine.validator.ProductValidator;
 
 import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 public class ProductInfos {
     private final List<ProductInfo> productInfos;
@@ -36,9 +33,7 @@ public class ProductInfos {
 
     public int getProductOfLowestPrice() {
         return productInfos.stream()
-                .collect(Collectors.toMap(ProductInfo::getName, ProductInfo::getPrice, Integer::min))
-                .values()
-                .stream()
+                .map(ProductInfo::getPrice)
                 .min(Comparator.naturalOrder())
                 .orElseThrow(() -> new IllegalStateException("No products found"));
     }
