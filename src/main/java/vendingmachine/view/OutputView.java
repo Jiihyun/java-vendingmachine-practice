@@ -1,9 +1,8 @@
 package vendingmachine.view;
 
 import vendingmachine.domain.Coin;
-import vendingmachine.domain.dto.output.PossessCoinResponse;
+import vendingmachine.domain.dto.output.CoinQuantitiesResponse;
 import vendingmachine.io.writer.Writer;
-import vendingmachine.view.constants.PrintFormat;
 
 import java.util.Map;
 
@@ -17,13 +16,13 @@ public class OutputView {
         this.writer = writer;
     }
 
-    public void printQuantities(PossessCoinResponse possessCoinResponse) {
+    public void printQuantities(CoinQuantitiesResponse coinQuantitiesResponse) {
         writer.writeln(OUTPUT_COIN_QUANTITY_MSG.getMessage());
         writer.writef(QUANTITY_FORMAT.getFormat(),
-                possessCoinResponse.quantityOf500(),
-                possessCoinResponse.quantityOf100(),
-                possessCoinResponse.quantityOf50(),
-                possessCoinResponse.quantityOf10());
+                coinQuantitiesResponse.quantityOf500(),
+                coinQuantitiesResponse.quantityOf100(),
+                coinQuantitiesResponse.quantityOf50(),
+                coinQuantitiesResponse.quantityOf10());
     }
 
     public void printChange(int paidMoney, Map<Coin, Integer> change) {

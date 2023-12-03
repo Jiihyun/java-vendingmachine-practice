@@ -44,7 +44,7 @@ public class VendingMachine {
 
     public Map<Coin, Integer> returnChange(VendingMachineCoins moneyInVendingMachine, int remainMoney) {
         Map<Coin, Integer> change = new EnumMap<>(Coin.class);
-        Map<Coin, Integer> possessQuantities = moneyInVendingMachine.getPossessQuantities();
+        Map<Coin, Integer> possessQuantities = moneyInVendingMachine.getCoinQuantities();
         Map<Coin, Integer> changeQuantity = possessQuantities.entrySet().stream().filter(coinIntegerEntry -> coinIntegerEntry.getValue() > 0)
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
         for (Coin coin : changeQuantity.keySet()) {

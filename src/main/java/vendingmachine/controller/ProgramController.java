@@ -20,7 +20,7 @@ public class ProgramController {
 
     public void start() {
         VendingMachineCoins moneyInVendingMachine = inputView.readMoneyInVendingMachine();
-        outputView.printQuantities(moneyInVendingMachine.getQuantities());
+        outputView.printQuantities(moneyInVendingMachine.toCoinQuantities());
 
         ProductInfos productInfos = inputView.readProductInfo();
         int paidMoney = inputView.readPaidMoney();

@@ -9,12 +9,13 @@ import java.util.List;
 import static vendingmachine.domain.Coin.*;
 
 public class RandomCoinMaker {
-    public int generate() {
-        List<Integer> coinCategories = new ArrayList<>(Arrays.asList(
+    public Coin generate() {
+        int coinAmount = Randoms.pickNumberInList(List.of(
                 COIN_500.getAmount(),
                 COIN_100.getAmount(),
                 COIN_50.getAmount(),
-                COIN_10.getAmount()));
-        return Randoms.pickNumberInList(coinCategories);
+                COIN_10.getAmount())
+        );
+       return Coin.from(coinAmount);
     }
 }
