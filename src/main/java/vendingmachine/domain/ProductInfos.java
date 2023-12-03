@@ -1,5 +1,7 @@
 package vendingmachine.domain;
 
+import vendingmachine.validator.ProductValidator;
+
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
@@ -10,6 +12,7 @@ public class ProductInfos {
     private final List<ProductInfo> productInfos;
 
     public ProductInfos(List<ProductInfo> productInfos) {
+        ProductValidator.validateDuplicatedName(productInfos);
         this.productInfos = productInfos;
     }
 

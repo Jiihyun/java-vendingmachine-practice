@@ -1,6 +1,7 @@
 package vendingmachine.domain;
 
 import vendingmachine.validator.PriceValidator;
+import vendingmachine.validator.ProductValidator;
 
 public class ProductInfo {
     private final String name;
@@ -9,6 +10,7 @@ public class ProductInfo {
 
     public ProductInfo(String name, int price, int quantity) {
         PriceValidator.validatePrice(price);
+        ProductValidator.validateProductQuantity(quantity);
         this.name = name;
         this.price = price;
         this.quantity = quantity;
